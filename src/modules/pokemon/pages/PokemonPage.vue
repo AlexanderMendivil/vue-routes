@@ -1,6 +1,6 @@
 <template>
     <h1>Pokemon Page <span>{{ id }}</span></h1>
-    <img :src="pokemon.sprites.front_default" alt="">
+    <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
 </template>
 
 <script>
