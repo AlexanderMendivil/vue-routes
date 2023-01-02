@@ -8,7 +8,7 @@ const routes = [
         component:  ()=>  import(/*webPackChunkName: "PokemonPage"*/'../modules/pokemon/pages/PokemonPage.vue'),
         props: ( route ) => {
             const id = +route.params.id
-            return isNaN(id) ? {id: 0} : {id: +route.params.id}
+            return isNaN(id) ? {id: 1} : {id: +route.params.id}
         }
     },
     { path: '/:pathMatch(.*)*', component:  ()=>  import(/*webPackChunkName: "NoFoundPage"*/'../modules/shared/pages/NoPageFound.vue') },
