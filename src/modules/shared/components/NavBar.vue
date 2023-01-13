@@ -18,7 +18,7 @@ export default {
                 {to: '/home', name: 'Pokemons'},
                 {to: '/pokemonid/50', name: 'por ID'},
                 {to: '/about', name: 'about'},
-                {to: 'https://google.com', name: 'google'},
+                {to: 'https://www.google.com', name: 'google'},
             ]
         }
     },
