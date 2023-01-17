@@ -1,6 +1,6 @@
 <template>
     <h1>Pokemon Page <span>{{ id }}</span></h1>
-    <img :src="pokemon.sprites.front_default" :alt="pokemon.name">
+    <img v-if="pokemon" :src="pokemon.sprites.front_default" :alt="pokemon.name">
 </template>
 
 <script>
@@ -25,6 +25,7 @@
 
                     const pokemon = await fetch(`https://pokeapi.co/api/v2/pokemon/${this.id}`).then( r => r.json() )
                     this.pokemon = pokemon
+                    console.log(pokemon)
                 }catch(e){
                     this.$router.push('/')
                 }

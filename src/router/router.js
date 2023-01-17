@@ -1,4 +1,5 @@
 import { createRouter, createWebHashHistory } from "vue-router"
+import isAuthenthicatedGuard from "./authGuard"
 
 const routes = [
     {path: '/', redirect: '/pokemon'},
@@ -27,12 +28,13 @@ const routes = [
     {
         path: '/dbz',
         name: 'dbz',
+        beforeEnter: [ isAuthenthicatedGuard ],
         component: () => import(/*webPackChunkName: "DragonBallLayout"*/'@/modules/dbz/layout/LayoutDbz.vue'),
         children:[
             { path: 'characters', name: 'characters-dbz', component:  ()=>  import(/*webPackChunkName: "DragonBallCharacters"*/'@/modules/dbz/pages/Characters.vue') },
             { path: 'about', name:'about-dbz', component:  ()=>  import(/*webPackChunkName: "AboutPageDbz"*/'@/modules/dbz/pages/About.vue') },
             {path: '', redirect: {name: 'about-dbz' }},
-
+            
         ],
     },
     { path: '/:pathMatch(.*)*', component:  ()=>  import(/*webPackChunkName: "NoFoundPage"*/'../modules/shared/pages/NoPageFound.vue') },
@@ -42,5 +44,15 @@ const router = createRouter({
     history: createWebHashHistory(),
     routes
 })
+
+const canAccess = () =>{
+    return new Promise(resolve=> {
+
+    }); 
+}
+
+// router.beforeEach(( to, from, next )=>{
+
+// })
 
 export default router
